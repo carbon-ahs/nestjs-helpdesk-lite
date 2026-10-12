@@ -9,6 +9,7 @@ import {
 } from '@nestjs/common';
 import { TicketsService } from './tickets.service.js';
 import { Ticket } from './ticket.interface.js';
+import { CreateTicketDto } from './dto/create-ticket.dto.js';
 
 @Controller('tickets')
 export class TicketsController {
@@ -37,7 +38,7 @@ export class TicketsController {
   // there is no path string in Post(), so it will use controller's path
 
   @Post()
-  create(@Body() payload: any) {
-    return this.ticketService.create(payload);
+  create(@Body() createTicketDto: CreateTicketDto) {
+    return this.ticketService.create(createTicketDto);
   }
 }

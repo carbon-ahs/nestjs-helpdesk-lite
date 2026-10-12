@@ -69,7 +69,36 @@ Request
 | PATCH  | `/tickets/:id` | Update a ticket                       | `StaffGuard` |
 | DELETE | `/tickets/:id` | Delete a ticket                       | `StaffGuard` |
 
-> The `StaffGuard` is a learning stand-in for real auth. It checks a simple header/flag — no JWT or sessions.
+
+## The `StaffGuard`
+
+This is a learning stand-in for real auth. It reads a static token from the `x-staff-token` header and rejects the request with **403 Forbidden** if it doesn't match.
+
+```ts
+@Injectable()
+export class StaffGuard implements CanActivate {
+  canActivate(
+    context: ExecutionContext, // need to study more
+  ): boolean {
+    const request = context.switchToHttp().getRequest();
+    const staffKey = request.headers['x-staff-token'];
+    if (staffKey !== 'helpdesk-staff-key') {
+      throw new ForbiddenException('Staff access required');
+    }
+    return true;
+  }
+}
+```
+
+Protected routes require this header:
+
+```
+x-staff-token: helpdesk-staff-key
+```
+
+> **TODO for myself:** study `ExecutionContext` more deeply — `switchToHttp()`, `switchToWs()`, `switchToRpc()`, and how guards work across different transports.
+
+
 
 ## Getting Started
 
@@ -99,7 +128,7 @@ Server runs at `http://localhost:3000` by default.
 **Create a ticket**
 
 ```bash
-curl -X POST http://localhost:3000/tickets \
+curl -X POST http://localhost:3000/api/tickets \
   -H "Content-Type: application/json" \
   -d '{
     "subject": "Payment failed",
@@ -111,14 +140,23 @@ curl -X POST http://localhost:3000/tickets \
 **List tickets with filters**
 
 ```bash
-curl "http://localhost:3000/tickets?priority=medium&status=open"
+curl "http://localhost:3000/api/tickets?priority=medium&status=open"
 ```
 
 **Update a ticket**
 
 ```bash
-curl -X PATCH http://localhost:3000/tickets/2 \
+curl -X PATCH http://localhost:3000/api/tickets/2 \
   -H "Content-Type: application/json" \
+  -d '{ "status": "closed" }'
+```
+
+**Close a ticket**
+
+```bash
+curl -X PATCH http://localhost:3000/api/tickets/2 \
+  -H "Content-Type: application/json" \
+  -H "x-staff-token: helpdesk-staff-key" \
   -d '{ "status": "closed" }'
 ```
 

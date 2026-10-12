@@ -18,6 +18,7 @@ nest g interface tickets/ticket --flat
 nest g class tickets/dto/create-ticket.dto --no-spec --flat
 nest g class tickets/dto/filter-ticket-query.dto --no-spec --flat
 nest g class tickets/dto/update-ticket.dto --no-spec --flat
+nest g middleware common/request-logger --no-spec --flat
 
 npm install class-validator class-transformer
 ```

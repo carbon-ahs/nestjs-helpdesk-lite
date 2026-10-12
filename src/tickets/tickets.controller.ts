@@ -1,4 +1,12 @@
-import { Controller, Get, Param, ParseIntPipe, Query } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  ParseIntPipe,
+  Post,
+  Query,
+} from '@nestjs/common';
 import { TicketsService } from './tickets.service.js';
 import { Ticket } from './ticket.interface.js';
 
@@ -18,5 +26,18 @@ export class TicketsController {
   @Get(':id')
   findOne(@Param('id', ParseIntPipe) id: number) {
     return this.ticketService.findOne(id);
+  }
+
+  // demo payload is added for postman
+  // {
+  //   "subject": "Unable to create ticket",
+  //   "description": "The ticket description",
+  //   "priority": "high"
+  // }
+  // there is no path string in Post(), so it will use controller's path
+
+  @Post()
+  create(@Body() payload: any) {
+    return this.ticketService.create(payload);
   }
 }

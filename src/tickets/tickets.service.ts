@@ -1,4 +1,10 @@
-import { Injectable, NotFoundException, Query } from '@nestjs/common';
+import {
+  Body,
+  Injectable,
+  NotFoundException,
+  Post,
+  Query,
+} from '@nestjs/common';
 import { Ticket } from './ticket.interface.js';
 
 @Injectable()

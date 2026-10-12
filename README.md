@@ -1,7 +1,8 @@
-
 # Tickets API — NestJS Learning Project
 
-A small REST API built with [NestJS](https://nestjs.com/) as my **first complete NestJS project**. The goal was to learn the **request lifecycle** (middleware → guards → interceptors → pipes → controller → service) and the basic building blocks of a Nest application — **without** auth, a database, or any intermediate topics.
+A small REST API built with [NestJS](https://nestjs.com/) as my **first complete NestJS project**. The goal was to learn
+the **request lifecycle** (middleware → guards → interceptors → pipes → controller → service) and the basic building
+blocks of a Nest application — **without** auth, a database, or any intermediate topics.
 
 ## What I Practiced
 
@@ -60,13 +61,13 @@ Request
 
 ## Endpoints
 
-| Method | Route          | Description                            | Guard        |
-| ------ | -------------- | -------------------------------------- | ------------ |
-| GET    | `/tickets`     | List tickets (supports query filters)  | —            |
-| GET    | `/tickets/:id` | Get one ticket                         | —            |
-| POST   | `/tickets`     | Create a ticket                        | `StaffGuard` |
-| PATCH  | `/tickets/:id` | Update a ticket                        | `StaffGuard` |
-| DELETE | `/tickets/:id` | Delete a ticket                        | `StaffGuard` |
+| Method | Route          | Description                           | Guard        |
+|--------|----------------|---------------------------------------|--------------|
+| GET    | `/tickets`     | List tickets (supports query filters) | —            |
+| GET    | `/tickets/:id` | Get one ticket                        | —            |
+| POST   | `/tickets`     | Create a ticket                       | `StaffGuard` |
+| PATCH  | `/tickets/:id` | Update a ticket                       | `StaffGuard` |
+| DELETE | `/tickets/:id` | Delete a ticket                       | `StaffGuard` |
 
 > The `StaffGuard` is a learning stand-in for real auth. It checks a simple header/flag — no JWT or sessions.
 
@@ -141,14 +142,14 @@ Because of `ResponseInterceptor`, every successful response is wrapped in a unif
 
 ### Ticket Fields
 
-| Field         | Type     | Notes                                              |
-| ------------- | -------- | -------------------------------------------------- |
-| `id`          | `number` | Auto-incremented                                   |
-| `subject`     | `string` | Short title of the issue                           |
-| `description` | `string` | Full description of the issue                      |
-| `priority`    | `string` | `low` \| `medium` \| `high`                        |
-| `status`      | `string` | `open` \| `in_progress` \| `closed`                |
-| `createdAt`   | `string` | ISO 8601 timestamp                                 |
+| Field         | Type     | Notes                         |
+|---------------|----------|-------------------------------|
+| `id`          | `number` | Auto-incremented              |
+| `subject`     | `string` | Short title of the issue      |
+| `description` | `string` | Full description of the issue |
+| `priority`    | `string` | `low` \| `medium` \| `high`   |
+| `status`      | `string` | `open` \|  `closed`           |
+| `createdAt`   | `string` | ISO 8601 timestamp            |
 
 ## Validation
 
@@ -187,8 +188,8 @@ These are the next topics I'll learn.
 
 ## Source
 
-yt: https://youtu.be/K20Ej3iKLpw?si=ya95nr0ySfjVs-Zn  
-gh: https://github.com/learnwithsumit/nestjs-crash-course  
+- yt: https://youtu.be/K20Ej3iKLpw?si=ya95nr0ySfjVs-Zn
+- gh: https://github.com/learnwithsumit/nestjs-crash-course
 
 ## Used commands:
 

@@ -7,6 +7,7 @@ import {
 } from '@nestjs/common';
 import { Ticket } from './ticket.interface.js';
 import { CreateTicketDto } from './dto/create-ticket.dto.js';
+import { UpdateTicketDto } from './dto/update-ticket.dto.js';
 
 @Injectable()
 export class TicketsService {
@@ -71,6 +72,12 @@ export class TicketsService {
     };
 
     this.tickets.push(ticket);
+    return ticket;
+  }
+
+  update(id: number, updateTicketDto: UpdateTicketDto) {
+    const ticket = this.findOne(id);
+    Object.assign(ticket, updateTicketDto);
     return ticket;
   }
 }

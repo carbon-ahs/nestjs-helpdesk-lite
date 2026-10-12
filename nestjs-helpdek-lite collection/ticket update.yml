@@ -1,0 +1,22 @@
+info:
+  name: ticket update
+  type: http
+  seq: 6
+
+http:
+  method: POST
+  url: "{{base_url}}/tickets/1"
+  body:
+    type: json
+    data: |-
+      {
+        "priority": "low"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

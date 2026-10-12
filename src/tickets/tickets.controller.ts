@@ -4,6 +4,7 @@ import {
   Get,
   Param,
   ParseIntPipe,
+  Patch,
   Post,
   Query,
 } from '@nestjs/common';
@@ -11,6 +12,7 @@ import { TicketsService } from './tickets.service.js';
 import { Ticket } from './ticket.interface.js';
 import { CreateTicketDto } from './dto/create-ticket.dto.js';
 import { FilterTicketQueryDto } from './dto/filter-ticket-query.dto.js';
+import { UpdateTicketDto } from './dto/update-ticket.dto.js';
 
 @Controller('tickets')
 export class TicketsController {
@@ -46,5 +48,13 @@ export class TicketsController {
   @Post()
   create(@Body() createTicketDto: CreateTicketDto) {
     return this.ticketService.create(createTicketDto);
+  }
+
+  @Patch(':id')
+  update(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() updateTicketDto: UpdateTicketDto,
+  ) {
+    return this.ticketService.update(id, updateTicketDto);
   }
 }

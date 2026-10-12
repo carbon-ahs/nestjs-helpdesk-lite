@@ -1,0 +1,22 @@
+info:
+  name: ticket close
+  type: http
+  seq: 7
+
+http:
+  method: PATCH
+  url: "{{base_url}}/tickets/3"
+  body:
+    type: json
+    data: |-
+      {
+        "priority": "low"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

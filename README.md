@@ -5,7 +5,7 @@ gh:
 
 ## Daily check:
 
-1. 12-10-2026: https://youtu.be/K20Ej3iKLpw?si=e0vArgBlWGYpniMi&t=4489
+1. 12-10-2026: https://youtu.be/K20Ej3iKLpw?si=PCgpmQfzIWd12mJL&t=5980
 
 ## Used commands:
 

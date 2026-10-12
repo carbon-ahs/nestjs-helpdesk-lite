@@ -57,4 +57,9 @@ export class TicketsController {
   ) {
     return this.ticketService.update(id, updateTicketDto);
   }
+
+  @Patch(':id/close')
+  closeTicket(@Param('id', ParseIntPipe) id: number) {
+    return this.ticketService.closeTicket(id);
+  }
 }

@@ -5,13 +5,13 @@ info:
 
 http:
   method: PATCH
-  url: "{{base_url}}/tickets/3"
+  url: "{{base_url}}/tickets/1/close"
+  headers:
+    - name: x-staff-token
+      value: helpdesk-staff-key
   body:
     type: json
-    data: |-
-      {
-        "priority": "low"
-      }
+    data: ""
   auth: inherit
 
 settings:

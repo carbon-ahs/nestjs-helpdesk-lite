@@ -1,0 +1,25 @@
+info:
+  name: ticket query
+  type: http
+  seq: 4
+
+http:
+  method: GET
+  url: "{{base_url}}/tickets"
+  params:
+    - name: status
+      value: close
+      type: query
+      disabled: true
+    - name: priority
+      value: low
+      type: query
+      disabled: true
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

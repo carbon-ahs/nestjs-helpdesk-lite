@@ -20,6 +20,7 @@ nest g class tickets/dto/filter-ticket-query.dto --no-spec --flat
 nest g class tickets/dto/update-ticket.dto --no-spec --flat
 nest g middleware common/request-logger --no-spec --flat
 nest g guard tickets/guards/staff --no-spec --flat
+nest g interceptor common/response --no-spec --flat
 
 
 npm install class-validator class-transformer

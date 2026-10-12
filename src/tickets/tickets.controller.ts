@@ -10,18 +10,24 @@ import {
 import { TicketsService } from './tickets.service.js';
 import { Ticket } from './ticket.interface.js';
 import { CreateTicketDto } from './dto/create-ticket.dto.js';
+import { FilterTicketQueryDto } from './dto/filter-ticket-query.dto.js';
 
 @Controller('tickets')
 export class TicketsController {
   constructor(private ticketService: TicketsService) {}
-  @Get()
-  findAll(
-    @Query('status') status?: Ticket['status'],
-    @Query('priority') priority?: Ticket['priority'],
-  ) {
-    return this.ticketService.findAll(status, priority);
-  }
+  // @Get()
+  // findAll(
+  //   @Query('status') status?: Ticket['status'],
+  //   @Query('priority') priority?: Ticket['priority'],
+  // ) {
+  //   return this.ticketService.findAll(status, priority);
+  // }
 
+  // there is no query param name. if not provided, you can get full query object.
+  @Get()
+  findAll(@Query() filters: FilterTicketQueryDto) {
+    return this.ticketService.findAll(filters.status, filters.priority);
+  }
   // dynamic route param
   // ParseIntPipe for converting string id to number
   @Get(':id')

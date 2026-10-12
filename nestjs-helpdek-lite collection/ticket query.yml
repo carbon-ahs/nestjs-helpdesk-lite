@@ -5,12 +5,11 @@ info:
 
 http:
   method: GET
-  url: "{{base_url}}/tickets"
+  url: "{{base_url}}/tickets?status=open"
   params:
     - name: status
-      value: close
+      value: open
       type: query
-      disabled: true
     - name: priority
       value: low
       type: query

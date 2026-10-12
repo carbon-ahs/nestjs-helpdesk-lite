@@ -12,7 +12,8 @@ http:
       {
         "subject": "Unable to create ticket",
         "description": "The ticket description",
-        "priority": "high"
+        "priority": "low",
+        "priorityXXX": "low"
       }
   auth: inherit
 
